@@ -1,4 +1,4 @@
-android-password-strength-indicator
+Password Strength Indicator for Android
 ===================================
 
-A simple and easily implemented password strength indicator for Android
+I designed this to be a simple and easy to implement password strength indicator to be used in any Android app.
