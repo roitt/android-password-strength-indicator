@@ -63,29 +63,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PasswordStrengthView.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PasswordStrengthView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5138889" vertical-offset="2937" max-vertical-offset="5250">
-              <caret line="218" column="39" selection-start-line="218" selection-start-column="39" selection-end-line="218" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5265">
+              <caret line="195" column="29" selection-start-line="195" selection-start-column="29" selection-end-line="195" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3358#3359#0" expanded="true" />
-                <element signature="e#3402#3403#0" expanded="true" />
-                <element signature="e#5359#5360#0" expanded="true" />
-                <element signature="e#5402#5403#0" expanded="true" />
-                <element signature="e#12022#12023#0" expanded="true" />
-                <element signature="e#12056#12057#0" expanded="true" />
+                <element signature="e#3434#3435#0" expanded="true" />
+                <element signature="e#3478#3479#0" expanded="true" />
+                <element signature="e#5435#5436#0" expanded="true" />
+                <element signature="e#5478#5479#0" expanded="true" />
+                <element signature="e#12112#12113#0" expanded="true" />
+                <element signature="e#12146#12147#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoundedPasswordStrengthView.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RoundedPasswordStrengthView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/RoundedPasswordStrengthView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.5324074" vertical-offset="0" max-vertical-offset="648">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -804,10 +804,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-v14/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrength.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/RoundedPasswordStrengthView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_indicator_demo.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/RoundedPasswordStrengthView.java" />
       </list>
     </option>
   </component>
@@ -1012,7 +1012,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="preferences.general" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -1269,12 +1269,12 @@
           <caret line="197" column="75" selection-start-line="197" selection-start-column="75" selection-end-line="197" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1312,12 +1312,12 @@
           <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1362,12 +1362,12 @@
           <caret line="135" column="28" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1397,12 +1397,12 @@
           <caret line="169" column="65" selection-start-line="169" selection-start-column="65" selection-end-line="169" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1440,12 +1440,12 @@
           <caret line="138" column="26" selection-start-line="138" selection-start-column="26" selection-end-line="138" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1483,12 +1483,12 @@
           <caret line="84" column="88" selection-start-line="84" selection-start-column="88" selection-end-line="84" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1526,12 +1526,12 @@
           <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1660,16 +1660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/RoundedPasswordStrengthView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/IndicatorDemoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="1515">
@@ -1680,16 +1670,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5138889" vertical-offset="2937" max-vertical-offset="5250">
-          <caret line="218" column="39" selection-start-line="218" selection-start-column="39" selection-end-line="218" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5265">
+          <caret line="195" column="29" selection-start-line="195" selection-start-column="29" selection-end-line="195" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5402#5403#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12056#12057#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3478#3479#0" expanded="true" />
+            <element signature="e#5435#5436#0" expanded="true" />
+            <element signature="e#5478#5479#0" expanded="true" />
+            <element signature="e#12112#12113#0" expanded="true" />
+            <element signature="e#12146#12147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/RoundedPasswordStrengthView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5324074" vertical-offset="0" max-vertical-offset="648">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

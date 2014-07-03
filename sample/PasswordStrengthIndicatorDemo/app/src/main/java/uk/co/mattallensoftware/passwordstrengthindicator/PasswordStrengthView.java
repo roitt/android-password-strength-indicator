@@ -29,10 +29,11 @@ import android.view.View;
  */
 public class PasswordStrengthView extends View {
 
-    protected final int             COLOR_FAIL = Color.parseColor("#e74c3c");
-    protected final int             COLOR_WEAK = Color.parseColor("#e67e22");
-    protected final int 			COLOR_STRONG = Color.parseColor("#2ecc71");
+    protected static final int      COLOR_FAIL = Color.parseColor("#e74c3c");
+    protected static final int      COLOR_WEAK = Color.parseColor("#e67e22");
+    protected static final int 		COLOR_STRONG = Color.parseColor("#2ecc71");
 
+    protected int                   mMinWidth = 300, mMinHeight = 80;
     protected Paint                 mIndicatorPaint, mGuidePaint;
     protected int 					mIndicatorHeight, mIndicatorWidth, mCurrentScore;
 
@@ -189,10 +190,10 @@ public class PasswordStrengthView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // Set minimum space for the view to do it's thing
-        int minW = getPaddingLeft() + getPaddingRight() + 300;
+        int minW = getPaddingLeft() + getPaddingRight() + mMinWidth;
         int w = resolveSizeAndState(minW, widthMeasureSpec, 1);
         // And give it enough height so it's visible
-        int minH = 80 + getPaddingBottom() + getPaddingTop();
+        int minH = mMinHeight + getPaddingBottom() + getPaddingTop();
         int h = resolveSizeAndState(minH, heightMeasureSpec, 0);
         // Feed these back into UIKit
         setMeasuredDimension(w, h);
