@@ -5,4 +5,8 @@
     <string name="title">Password Strength Indicator</string>
     <string name="footer">By Matt Allen\nwww.mattallensoftware.co.uk</string>
 
+    <string name="strength_weak">Weak</string>
+    <string name="strength_medium">Medium</string>
+    <string name="strength_strong">Strong</string>
+
 </resources>

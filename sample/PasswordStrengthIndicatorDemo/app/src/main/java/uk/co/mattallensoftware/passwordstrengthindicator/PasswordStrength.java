@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -37,35 +38,24 @@ public class PasswordStrength extends View {
     private float 					mTextHeight;
     private int 					mIndicatorHeight, mIndicatorWidth, mCurrentScore;
 
+    private boolean                 mShowGuides = true;
+
     /**
      * Used to define that the indicator should only be looking
      * for a weak password. The bare minimum is used here to let
      * the user continue.
-     * <br /><br />
-     * Minimum length = 6<br />
-     * Upper and lowercase = 0<br />
-     * Numbers and letters = 0<br />
-     * Non-alphanumeric characters = 0<br />
      */
     public static final int STRENGTH_WEAK = 0;
 
     /**
-     * Define that the password meets these specified requirements:
-     * <br /><br />
-     * Minimum length = 10<br />
-     * Upper and lowercase = 2 of each<br />
-     * Numbers and letters = 2 of each<br />
-     * Non-alphanumeric characters = 0<br />
+     * A fairly strict rule for generating a password. It encourages a password that is
+     * less easy to crack.
      */
     public static final int STRENGTH_MEDIUM = 1;
 
     /**
-     * Define that the password meets these specified requirements:
-     * <br /><br />
-     * Minimum length = 16<br />
-     * Upper and lowercase = 3 of each<br />
-     * Numbers and letters = 3 of each<br />
-     * Non-alphanumeric characters = 2<br />
+     * A strong algorithm that encourages very strong passwords that should be fairly long, with
+     * non-alphanumeric, numbers, and upper case.
      */
     public static final int STRENGTH_STRONG = 2;
 
@@ -88,6 +78,7 @@ public class PasswordStrength extends View {
         try {
             mStrengthRequirement = style.getInteger(R.styleable.PasswordStrength_strength, STRENGTH_MEDIUM);
             mSelectedShape = style.getInteger(R.styleable.PasswordStrength_shape, VIEW_LINE);
+            mShowGuides = style.getBoolean(R.styleable.PasswordStrength_showGuides, true);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -113,6 +104,12 @@ public class PasswordStrength extends View {
     public void setStrengthRequirement(int requiredStrength) {
         if(requiredStrength >= 0 && requiredStrength <= 2){
             mStrengthRequirement = requiredStrength;
+            if (mPassword != null && mPassword.length() > 0) {
+                generatePasswordScore();
+                // Update view with new score
+                invalidate();
+                requestLayout();
+            }
         } else {
             throw new IndexOutOfBoundsException("Input out of expected range");
         }
@@ -125,7 +122,7 @@ public class PasswordStrength extends View {
     public void setPassword(String passwordString) {
         if(passwordString != null && passwordString.length() > 0) {
             mPassword = passwordString;
-            getPasswordScore();
+            generatePasswordScore();
             // Update view with new score
             invalidate();
             requestLayout();
@@ -134,7 +131,6 @@ public class PasswordStrength extends View {
             mCurrentScore = 0;
             invalidate();
             requestLayout();
-            throw new NullPointerException("Password is empty");
         }
     }
 
@@ -152,10 +148,18 @@ public class PasswordStrength extends View {
     }
 
     /**
+     * Call this to determine the current strength requirement set on the algorithm
+     * @return Int representation of the current strength set for the indicator
+     */
+    public int getStrengthRequirement() {
+        return mStrengthRequirement;
+    }
+
+    /**
      * Generate a score based on the password. The password will already need to be stored
      * as a class member before running this.
      */
-    private void getPasswordScore() {
+    private void generatePasswordScore() {
         mCurrentScore = 0;
         int upperCase = getUppercaseCount(mPassword);
         int nonAlpha = getNonAlphanumericCount(mPassword);
@@ -173,9 +177,8 @@ public class PasswordStrength extends View {
                 break;
 
             case STRENGTH_STRONG:
-                addToPasswordScore(mPassword.length());
+                addToPasswordScore(mPassword.length()/2);
                 // Cut the score in half to make this a very high requirement
-                mCurrentScore = mCurrentScore/2;
                 break;
         }
     }
@@ -191,9 +194,9 @@ public class PasswordStrength extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int minw = getPaddingLeft() + getPaddingRight() + getSuggestedMinimumWidth();
+        int minw = getPaddingLeft() + getPaddingRight() + 300;
         int w = resolveSizeAndState(minw, widthMeasureSpec, 1);
-        int minh = 100 - getPaddingBottom() + getPaddingTop();
+        int minh = 80 + getPaddingBottom() + getPaddingTop();
         int h = resolveSizeAndState(minh, heightMeasureSpec, 0);
 
         setMeasuredDimension(w, h);
@@ -262,5 +265,29 @@ public class PasswordStrength extends View {
             }
         }
         return score;
+    }
+
+    /**
+     * Set the guides to show on the view.<br />
+     * On the line style, the guides will show underneath<br />
+     * On the rounded style, the guides will be shown on the outer edges.<br />
+     * The view will be redrawn after the method is called.
+     * @param showGuides True if you want the guides to be shown
+     */
+    public void setShowGuides(boolean showGuides) {
+        mShowGuides = showGuides;
+        if (mPassword != null && mPassword.length() > 0) {
+            generatePasswordScore();
+            invalidate();
+            requestLayout();
+        }
+    }
+
+    /**
+     * Determine whether the view is showing the guides for the password score
+     * @return True if the guides are being shown
+     */
+    public boolean isShowingGuides() {
+        return mShowGuides;
     }
 }

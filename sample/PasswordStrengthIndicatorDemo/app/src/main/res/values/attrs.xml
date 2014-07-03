@@ -10,9 +10,11 @@
         </attr>
 
         <attr name="shape" format="enum">
-            <enum name="round" value="0" />
-            <enum name="line" value="1" />
+            <enum name="round" value="10" />
+            <enum name="line" value="11" />
         </attr>
+
+        <attr name="showGuides" format="boolean" />
 
     </declare-styleable>
 
