@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -28,14 +27,14 @@ import android.view.View;
  * considered strong.
  * </p>
  */
-public class PasswordStrength extends View {
+public class PasswordStrengthView extends View {
 
-    private final int               COLOR_FAIL = Color.parseColor("#e74c3c");
-    private final int 				COLOR_WEAK = Color.parseColor("#e67e22");
-    private final int 				COLOR_STRONG = Color.parseColor("#2ecc71");
+    protected final int             COLOR_FAIL = Color.parseColor("#e74c3c");
+    protected final int             COLOR_WEAK = Color.parseColor("#e67e22");
+    protected final int 			COLOR_STRONG = Color.parseColor("#2ecc71");
 
-    private Paint                   mIndicatorPaint, mGuidePaint;
-    private int 					mIndicatorHeight, mIndicatorWidth, mCurrentScore;
+    protected Paint                 mIndicatorPaint, mGuidePaint;
+    protected int 					mIndicatorHeight, mIndicatorWidth, mCurrentScore;
 
     private boolean                 mShowGuides = true;
 
@@ -44,40 +43,33 @@ public class PasswordStrength extends View {
      * for a weak password. The bare minimum is used here to let
      * the user continue.
      */
-    public static final int STRENGTH_WEAK = 0;
+    public static final int         STRENGTH_WEAK = 0;
 
     /**
      * A fairly strict rule for generating a password. It encourages a password that is
      * less easy to crack.
      */
-    public static final int STRENGTH_MEDIUM = 1;
+    public static final int         STRENGTH_MEDIUM = 1;
 
     /**
      * A strong algorithm that encourages very strong passwords that should be fairly long, with
      * non-alphanumeric, numbers, and upper case.
      */
-    public static final int STRENGTH_STRONG = 2;
+    public static final int         STRENGTH_STRONG = 2;
 
-    public static final int VIEW_ROUND = 10;
-    public static final int VIEW_LINE = 11;
+    private int                     mStrengthRequirement = -1;
+    protected String                mPassword;
 
-    private int mStrengthRequirement = -1;
-
-    private int mSelectedShape = -1;
-
-    private String mPassword;
-
-    public PasswordStrength(Context context, AttributeSet attrs) {
+    public PasswordStrengthView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray style = context.getTheme().obtainStyledAttributes(
                 attrs,
-                R.styleable.PasswordStrength,
+                R.styleable.PasswordStrengthView,
                 0, 0);
 
         try {
-            mStrengthRequirement = style.getInteger(R.styleable.PasswordStrength_strength, STRENGTH_MEDIUM);
-            mSelectedShape = style.getInteger(R.styleable.PasswordStrength_shape, VIEW_LINE);
-            mShowGuides = style.getBoolean(R.styleable.PasswordStrength_showGuides, true);
+            mStrengthRequirement = style.getInteger(R.styleable.PasswordStrengthView_strength, STRENGTH_MEDIUM);
+            mShowGuides = style.getBoolean(R.styleable.PasswordStrengthView_showGuides, true);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -140,7 +132,7 @@ public class PasswordStrength extends View {
      * Private convenience method for adding to the password score
      * @param score Amount to be added to current score
      */
-    private void addToPasswordScore(int score) {
+    protected void addToPasswordScore(int score) {
         // Limit max score
         if ((mCurrentScore + score) > 20){
             mCurrentScore = 20;
@@ -161,7 +153,7 @@ public class PasswordStrength extends View {
      * Generate a score based on the password. The password will already need to be stored
      * as a class member before running this.
      */
-    private void generatePasswordScore() {
+    protected void generatePasswordScore() {
         mCurrentScore = 0;
         int upperCase = getUppercaseCount(mPassword);
         int nonAlpha = getNonAlphanumericCount(mPassword);
@@ -196,19 +188,18 @@ public class PasswordStrength extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int minw = getPaddingLeft() + getPaddingRight() + 300;
-        int w = resolveSizeAndState(minw, widthMeasureSpec, 1);
-        int minh = 80 + getPaddingBottom() + getPaddingTop();
-        int h = resolveSizeAndState(minh, heightMeasureSpec, 0);
-
+        // Set minimum space for the view to do it's thing
+        int minW = getPaddingLeft() + getPaddingRight() + 300;
+        int w = resolveSizeAndState(minW, widthMeasureSpec, 1);
+        // And give it enough height so it's visible
+        int minH = 80 + getPaddingBottom() + getPaddingTop();
+        int h = resolveSizeAndState(minH, heightMeasureSpec, 0);
+        // Feed these back into UIKit
         setMeasuredDimension(w, h);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    protected void generateIndicatorColor() {
         int color = COLOR_FAIL;
-        int indWidth = (mIndicatorWidth / 20) * mCurrentScore;
         if (mCurrentScore >= 18) {
             color = COLOR_STRONG;
         }
@@ -216,70 +207,76 @@ public class PasswordStrength extends View {
             color = COLOR_WEAK;
         }
         mIndicatorPaint.setColor(color);
-        if (mSelectedShape == VIEW_ROUND) {
+    }
 
-        }
-        else if (mSelectedShape == VIEW_LINE) {
-            // Draw line showing password strength
-            canvas.drawRect(
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        generateIndicatorColor();
+        // Default to full width
+        int indWidth = mIndicatorWidth;
+        // If score, leave it as full - can cause it to become
+        // less than full width in this calculation
+        if (mCurrentScore < 20) indWidth = (mIndicatorWidth / 20) * mCurrentScore;
+        // Draw indicator
+        canvas.drawRect(
+                getPaddingLeft(),
+                getPaddingTop(),
+                indWidth,
+                mIndicatorHeight,
+                mIndicatorPaint
+        );
+        // Draw guides
+        if (mShowGuides) {
+            // Draw bottom guide
+            float positionY = getHeight()-getPaddingBottom()-getPaddingTop();
+            float notchHeight = (float)(positionY * 0.8);
+            canvas.drawLine(
                     getPaddingLeft(),
-                    getPaddingTop(),
-                    indWidth,
-                    mIndicatorHeight,
-                    mIndicatorPaint
+                    positionY,
+                    getWidth()-getPaddingRight(),
+                    positionY,
+                    mGuidePaint);
+            // Show left-most notch
+            canvas.drawLine(
+                    getPaddingLeft(),
+                    positionY,
+                    getPaddingLeft(),
+                    notchHeight,
+                    mGuidePaint
             );
-            // Draw guides
-            if (mShowGuides) {
-                // Draw bottom guide
-                float positionY = getHeight()-getPaddingBottom()-getPaddingTop();
-                float notchHeight = (float)(positionY * 0.8);
-                canvas.drawLine(
-                        getPaddingLeft(),
-                        positionY,
-                        getWidth()-getPaddingRight(),
-                        positionY,
-                        mGuidePaint);
-                // Show left-most notch
-                canvas.drawLine(
-                        getPaddingLeft(),
-                        positionY,
-                        getPaddingLeft(),
-                        notchHeight,
-                        mGuidePaint
-                );
-                // Show middle-left notch
-                canvas.drawLine(
-                        (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
-                        positionY,
-                        (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
-                        notchHeight,
-                        mGuidePaint
-                );
-                // Show the middle notch
-                canvas.drawLine(
-                        (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
-                        positionY,
-                        (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
-                        notchHeight,
-                        mGuidePaint
-                );
-                // Show the middle-right notch
-                canvas.drawLine(
-                        (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
-                        positionY,
-                        (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
-                        notchHeight,
-                        mGuidePaint
-                );
-                // Show the right-most notch
-                canvas.drawLine(
-                        mIndicatorWidth+getPaddingLeft(),
-                        positionY,
-                        mIndicatorWidth+getPaddingLeft(),
-                        notchHeight,
-                        mGuidePaint
-                );
-            }
+            // Show middle-left notch
+            canvas.drawLine(
+                    (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
+                    positionY,
+                    (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
+                    notchHeight,
+                    mGuidePaint
+            );
+            // Show the middle notch
+            canvas.drawLine(
+                    (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
+                    positionY,
+                    (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
+                    notchHeight,
+                    mGuidePaint
+            );
+            // Show the middle-right notch
+            canvas.drawLine(
+                    (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
+                    positionY,
+                    (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
+                    notchHeight,
+                    mGuidePaint
+            );
+            // Show the right-most notch
+            canvas.drawLine(
+                    mIndicatorWidth+getPaddingLeft(),
+                    positionY,
+                    mIndicatorWidth+getPaddingLeft(),
+                    notchHeight,
+                    mGuidePaint
+            );
         }
     }
 
@@ -288,7 +285,7 @@ public class PasswordStrength extends View {
      * @param stringToCheck The string to examine
      * @return Number of upper case characters
      */
-    private int getUppercaseCount(String stringToCheck) {
+    protected int getUppercaseCount(String stringToCheck) {
         int score = 0;
         int loops = stringToCheck.length()-1;
         for (int i=0;i<=loops;i++){
@@ -299,7 +296,7 @@ public class PasswordStrength extends View {
         return score;
     }
 
-    private int getNonAlphanumericCount(String stringToCheck) {
+    protected int getNonAlphanumericCount(String stringToCheck) {
         int score = 0;
         int loops = stringToCheck.length()-1;
         for (int i=0;i<=loops;i++) {
@@ -311,7 +308,7 @@ public class PasswordStrength extends View {
         return score;
     }
 
-    private int getNumberCount(String stringToCheck) {
+    protected int getNumberCount(String stringToCheck) {
         int score = 0;
         int loops = stringToCheck.length()-1;
         for (int i=0;i<=loops;i++) {

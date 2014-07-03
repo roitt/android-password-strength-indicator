@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -14,7 +12,7 @@ import android.widget.RadioButton;
 public class IndicatorDemoActivity extends Activity implements RadioButton.OnCheckedChangeListener {
 
     private EditText mPasswordField;
-    private PasswordStrength mPasswordStrength;
+    private PasswordStrengthView mPasswordStrengthView;
 
     private RadioButton mRadioWeak, mRadioMedium, mRadioStrong;
 
@@ -24,7 +22,7 @@ public class IndicatorDemoActivity extends Activity implements RadioButton.OnChe
         setContentView(R.layout.activity_indicator_demo);
 
         mPasswordField = (EditText) findViewById(R.id.password_field);
-        mPasswordStrength = (PasswordStrength) findViewById(R.id.strength);
+        mPasswordStrengthView = (PasswordStrengthView) findViewById(R.id.strength);
 
         mRadioWeak = (RadioButton) findViewById(R.id.radio_weak);
         mRadioWeak.setOnCheckedChangeListener(this);
@@ -34,17 +32,17 @@ public class IndicatorDemoActivity extends Activity implements RadioButton.OnChe
         mRadioStrong.setOnCheckedChangeListener(this);
 
         // Check the right radio button for the current strength
-        int strength = mPasswordStrength.getStrengthRequirement();
+        int strength = mPasswordStrengthView.getStrengthRequirement();
         switch (strength) {
-            case PasswordStrength.STRENGTH_WEAK:
+            case PasswordStrengthView.STRENGTH_WEAK:
                 mRadioWeak.setChecked(true);
                 break;
 
-            case PasswordStrength.STRENGTH_MEDIUM:
+            case PasswordStrengthView.STRENGTH_MEDIUM:
                 mRadioMedium.setChecked(true);
                 break;
 
-            case PasswordStrength.STRENGTH_STRONG:
+            case PasswordStrengthView.STRENGTH_STRONG:
                 mRadioStrong.setChecked(true);
                 break;
 
@@ -62,7 +60,7 @@ public class IndicatorDemoActivity extends Activity implements RadioButton.OnChe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mPasswordStrength.setPassword(mPasswordField.getText().toString());
+                mPasswordStrengthView.setPassword(mPasswordField.getText().toString());
 
             }
 
@@ -78,15 +76,15 @@ public class IndicatorDemoActivity extends Activity implements RadioButton.OnChe
         if (isChecked) {
             switch (buttonView.getId()) {
                 case R.id.radio_weak:
-                    mPasswordStrength.setStrengthRequirement(PasswordStrength.STRENGTH_WEAK);
+                    mPasswordStrengthView.setStrengthRequirement(PasswordStrengthView.STRENGTH_WEAK);
                     break;
 
                 case R.id.radio_medium:
-                    mPasswordStrength.setStrengthRequirement(PasswordStrength.STRENGTH_MEDIUM);
+                    mPasswordStrengthView.setStrengthRequirement(PasswordStrengthView.STRENGTH_MEDIUM);
                     break;
 
                 case R.id.radio_strong:
-                    mPasswordStrength.setStrengthRequirement(PasswordStrength.STRENGTH_STRONG);
+                    mPasswordStrengthView.setStrengthRequirement(PasswordStrengthView.STRENGTH_STRONG);
                     break;
 
                 default:

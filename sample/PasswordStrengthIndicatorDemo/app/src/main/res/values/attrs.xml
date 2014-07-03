@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="PasswordStrength">
+    <declare-styleable name="PasswordStrengthView">
 
         <attr name="strength" format="enum">
             <enum name="weak" value="0" />
             <enum name="medium" value="1" />
             <enum name="strong" value="2" />
-        </attr>
-
-        <attr name="shape" format="enum">
-            <enum name="round" value="10" />
-            <enum name="line" value="11" />
         </attr>
 
         <attr name="showGuides" format="boolean" />

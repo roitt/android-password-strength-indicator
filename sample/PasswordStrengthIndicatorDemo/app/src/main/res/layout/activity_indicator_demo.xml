@@ -25,13 +25,12 @@
         android:layout_marginTop="20dp"
         android:inputType="textPassword" />
 
-    <uk.co.mattallensoftware.passwordstrengthindicator.PasswordStrength
+    <uk.co.mattallensoftware.passwordstrengthindicator.PasswordStrengthView
         android:id="@+id/strength"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/password_field"
         android:paddingTop="5dp"
-        custom:shape="line"
         custom:strength="strong" />
 
     <RadioGroup
