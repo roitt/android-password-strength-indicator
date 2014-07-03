@@ -34,8 +34,7 @@ public class PasswordStrength extends View {
     private final int 				COLOR_WEAK = Color.parseColor("#e67e22");
     private final int 				COLOR_STRONG = Color.parseColor("#2ecc71");
 
-    private Paint                   mTextPaint, mIndicatorPaint;
-    private float 					mTextHeight;
+    private Paint                   mIndicatorPaint, mGuidePaint;
     private int 					mIndicatorHeight, mIndicatorWidth, mCurrentScore;
 
     private boolean                 mShowGuides = true;
@@ -83,6 +82,9 @@ public class PasswordStrength extends View {
             e.printStackTrace();
         }
 
+        mGuidePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mGuidePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mGuidePaint.setColor(Color.BLACK);
         mIndicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mIndicatorPaint.setStyle(Paint.Style.FILL);
     }
@@ -218,6 +220,7 @@ public class PasswordStrength extends View {
 
         }
         else if (mSelectedShape == VIEW_LINE) {
+            // Draw line showing password strength
             canvas.drawRect(
                     getPaddingLeft(),
                     getPaddingTop(),
@@ -225,6 +228,58 @@ public class PasswordStrength extends View {
                     mIndicatorHeight,
                     mIndicatorPaint
             );
+            // Draw guides
+            if (mShowGuides) {
+                // Draw bottom guide
+                float positionY = getHeight()-getPaddingBottom()-getPaddingTop();
+                float notchHeight = (float)(positionY * 0.8);
+                canvas.drawLine(
+                        getPaddingLeft(),
+                        positionY,
+                        getWidth()-getPaddingRight(),
+                        positionY,
+                        mGuidePaint);
+                // Show left-most notch
+                canvas.drawLine(
+                        getPaddingLeft(),
+                        positionY,
+                        getPaddingLeft(),
+                        notchHeight,
+                        mGuidePaint
+                );
+                // Show middle-left notch
+                canvas.drawLine(
+                        (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
+                        positionY,
+                        (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
+                        notchHeight,
+                        mGuidePaint
+                );
+                // Show the middle notch
+                canvas.drawLine(
+                        (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
+                        positionY,
+                        (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
+                        notchHeight,
+                        mGuidePaint
+                );
+                // Show the middle-right notch
+                canvas.drawLine(
+                        (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
+                        positionY,
+                        (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
+                        notchHeight,
+                        mGuidePaint
+                );
+                // Show the right-most notch
+                canvas.drawLine(
+                        mIndicatorWidth+getPaddingLeft(),
+                        positionY,
+                        mIndicatorWidth+getPaddingLeft(),
+                        notchHeight,
+                        mGuidePaint
+                );
+            }
         }
     }
 
