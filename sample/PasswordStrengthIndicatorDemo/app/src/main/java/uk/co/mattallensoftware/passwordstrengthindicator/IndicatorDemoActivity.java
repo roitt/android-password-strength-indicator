@@ -21,7 +21,7 @@ public class IndicatorDemoActivity extends Activity implements RadioButton.OnChe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_indicator_bar_demo);
+        setContentView(R.layout.activity_indicator_round_demo);
 
         mPasswordField = (EditText) findViewById(R.id.password_field);
         mPasswordStrengthView = (PasswordStrengthView) findViewById(R.id.strength);
