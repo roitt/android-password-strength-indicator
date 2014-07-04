@@ -9,4 +9,6 @@
     <string name="strength_medium">Medium</string>
     <string name="strength_strong">Strong</string>
 
+    <string name="show_guides">Show Guides</string>
+
 </resources>

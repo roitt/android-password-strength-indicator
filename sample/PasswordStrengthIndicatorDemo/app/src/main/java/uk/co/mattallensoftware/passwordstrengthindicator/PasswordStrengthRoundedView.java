@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 /**
  * Created by matt on 03/07/2014.
  */
-public class RoundedPasswordStrengthView extends PasswordStrengthView {
+public class PasswordStrengthRoundedView extends PasswordStrengthView {
 
-    public RoundedPasswordStrengthView(Context context, AttributeSet attrs) {
+    public PasswordStrengthRoundedView(Context context, AttributeSet attrs) {
         super(context, attrs);
         // Change the width and height values to scale the view properly
         mMinWidth = 150;

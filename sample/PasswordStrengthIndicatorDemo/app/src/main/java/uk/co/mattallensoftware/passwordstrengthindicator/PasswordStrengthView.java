@@ -2,7 +2,6 @@ package uk.co.mattallensoftware.passwordstrengthindicator;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -33,11 +32,11 @@ public class PasswordStrengthView extends View {
     protected static final int      COLOR_WEAK = Color.parseColor("#e67e22");
     protected static final int 		COLOR_STRONG = Color.parseColor("#2ecc71");
 
-    protected int                   mMinWidth = 300, mMinHeight = 80;
+    protected int                   mMinWidth, mMinHeight;
     protected Paint                 mIndicatorPaint, mGuidePaint;
     protected int 					mIndicatorHeight, mIndicatorWidth, mCurrentScore;
 
-    private boolean                 mShowGuides = true;
+    protected boolean                 mShowGuides = true;
 
     /**
      * Used to define that the indicator should only be looking
@@ -159,21 +158,27 @@ public class PasswordStrengthView extends View {
         int upperCase = getUppercaseCount(mPassword);
         int nonAlpha = getNonAlphanumericCount(mPassword);
         int numbers = getNumberCount(mPassword);
-        addToPasswordScore(upperCase);
-        addToPasswordScore(nonAlpha*2);
-        addToPasswordScore(numbers);
         switch (mStrengthRequirement){
             case STRENGTH_WEAK:
                 addToPasswordScore(mPassword.length()*2);
+                addToPasswordScore(upperCase*2);
+                addToPasswordScore(nonAlpha*2);
+                addToPasswordScore(numbers*2);
                 break;
 
             case STRENGTH_MEDIUM:
-                addToPasswordScore((mPassword.length()));
+                addToPasswordScore(mPassword.length());
+                addToPasswordScore(upperCase);
+                addToPasswordScore(nonAlpha*2);
+                addToPasswordScore(numbers);
                 break;
 
             case STRENGTH_STRONG:
                 addToPasswordScore(mPassword.length()/2);
                 // Cut the score in half to make this a very high requirement
+                addToPasswordScore(upperCase);
+                addToPasswordScore(nonAlpha);
+                addToPasswordScore(numbers);
                 break;
         }
     }
@@ -210,76 +215,7 @@ public class PasswordStrengthView extends View {
         mIndicatorPaint.setColor(color);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        generateIndicatorColor();
-        // Default to full width
-        int indWidth = mIndicatorWidth;
-        // If score, leave it as full - can cause it to become
-        // less than full width in this calculation
-        if (mCurrentScore < 20) indWidth = (mIndicatorWidth / 20) * mCurrentScore;
-        // Draw indicator
-        canvas.drawRect(
-                getPaddingLeft(),
-                getPaddingTop(),
-                indWidth,
-                mIndicatorHeight,
-                mIndicatorPaint
-        );
-        // Draw guides
-        if (mShowGuides) {
-            // Draw bottom guide
-            float positionY = getHeight()-getPaddingBottom()-getPaddingTop();
-            float notchHeight = (float)(positionY * 0.8);
-            canvas.drawLine(
-                    getPaddingLeft(),
-                    positionY,
-                    getWidth()-getPaddingRight(),
-                    positionY,
-                    mGuidePaint);
-            // Show left-most notch
-            canvas.drawLine(
-                    getPaddingLeft(),
-                    positionY,
-                    getPaddingLeft(),
-                    notchHeight,
-                    mGuidePaint
-            );
-            // Show middle-left notch
-            canvas.drawLine(
-                    (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
-                    positionY,
-                    (float)(mIndicatorWidth*0.25)+getPaddingLeft(),
-                    notchHeight,
-                    mGuidePaint
-            );
-            // Show the middle notch
-            canvas.drawLine(
-                    (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
-                    positionY,
-                    (float)(mIndicatorWidth*0.5)+getPaddingLeft(),
-                    notchHeight,
-                    mGuidePaint
-            );
-            // Show the middle-right notch
-            canvas.drawLine(
-                    (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
-                    positionY,
-                    (float)(mIndicatorWidth*0.75)+getPaddingLeft(),
-                    notchHeight,
-                    mGuidePaint
-            );
-            // Show the right-most notch
-            canvas.drawLine(
-                    mIndicatorWidth+getPaddingLeft(),
-                    positionY,
-                    mIndicatorWidth+getPaddingLeft(),
-                    notchHeight,
-                    mGuidePaint
-            );
-        }
-    }
+
 
     /**
      * Quick method to determine how many of the characters in a given string are upper case
@@ -331,6 +267,10 @@ public class PasswordStrengthView extends View {
         mShowGuides = showGuides;
         if (mPassword != null && mPassword.length() > 0) {
             generatePasswordScore();
+            invalidate();
+            requestLayout();
+        } else {
+            mCurrentScore = 0;
             invalidate();
             requestLayout();
         }
