@@ -10,5 +10,7 @@
     <string name="strength_strong">Strong</string>
 
     <string name="show_guides">Show Guides</string>
+    <string name="action_bar_view">Show Bar View</string>
+    <string name="action_view_round">Show Round View</string>
 
 </resources>

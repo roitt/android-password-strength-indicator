@@ -1,4 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".IndicatorDemoActivity" >
+
+    <item
+        android:id="@+id/action_bar_view"
+        android:showAsAction="never"
+        android:title="@string/action_bar_view" />
+
+    <item
+        android:id="@+id/action_round_view"
+        android:showAsAction="never"
+        android:title="@string/action_view_round" />
 </menu>
