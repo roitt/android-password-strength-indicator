@@ -56,10 +56,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PasswordStrengthView.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PasswordStrengthView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6799431" vertical-offset="632" max-vertical-offset="4575">
+            <state vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="4575">
               <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
               <folding>
                 <element signature="e#3522#3523#0" expanded="true" />
@@ -83,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PasswordStrengthBarView.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PasswordStrengthBarView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthBarView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1455">
-              <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.44523472" vertical-offset="197" max-vertical-offset="1395">
+              <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -786,9 +786,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/IndicatorDemoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_indicator_bar_demo.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthBarView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthRoundedView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthBarView.java" />
       </list>
     </option>
   </component>
@@ -1758,14 +1758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthBarView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
-          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthRoundedView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="960">
@@ -1778,7 +1770,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6799431" vertical-offset="632" max-vertical-offset="4575">
+        <state vertical-scroll-proportion="0.0" vertical-offset="437" max-vertical-offset="4575">
           <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
           <folding>
             <element signature="e#3522#3523#0" expanded="true" />
@@ -1786,6 +1778,14 @@
             <element signature="e#5523#5524#0" expanded="true" />
             <element signature="e#5566#5567#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/uk/co/mattallensoftware/passwordstrengthindicator/PasswordStrengthBarView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44523472" vertical-offset="197" max-vertical-offset="1395">
+          <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

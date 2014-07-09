@@ -35,9 +35,10 @@ public class PasswordStrengthBarView extends PasswordStrengthView {
                 mIndicatorHeight,
                 mIndicatorPaint
         );
-        // Draw guides
+        // Draw guides if true
         if (mShowGuides) {
-            // Draw bottom guide
+            // TODO Try and do this with a loop, for efficiency
+            // Draw bottom guide border
             float positionY = getHeight()-getPaddingBottom()-getPaddingTop();
             float notchHeight = (float)(positionY * 0.8);
             canvas.drawLine(
