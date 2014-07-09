@@ -73,10 +73,11 @@ public class PasswordStrengthView extends View {
         } catch (Exception e){
             e.printStackTrace();
         }
-
+        // Create and style the paint used for drawing the guide on the indicator
         mGuidePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mGuidePaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mGuidePaint.setColor(Color.BLACK);
+        // Create and style paint for indicator
         mIndicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mIndicatorPaint.setStyle(Paint.Style.FILL);
     }
@@ -192,6 +193,13 @@ public class PasswordStrengthView extends View {
         mIndicatorWidth = w - paddingX;
     }
 
+    /**
+     * The standard parts of the onMeasure needed to create the password strength
+     * indicator. Subclasses should call super.onMeasure, but also need to set
+     * the minimum height and width in the constructor.
+     * @param widthMeasureSpec The measurement given by the system
+     * @param heightMeasureSpec The measurement given by the system
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // Set minimum space for the view to do it's thing
@@ -204,6 +212,10 @@ public class PasswordStrengthView extends View {
         setMeasuredDimension(w, h);
     }
 
+    /**
+     * Set the colour of the indicator {@code Paint} to one that is appropriate
+     * for the strength of the password.
+     */
     protected void generateIndicatorColor() {
         int color = COLOR_FAIL;
         if (mCurrentScore >= 18) {
@@ -214,8 +226,6 @@ public class PasswordStrengthView extends View {
         }
         mIndicatorPaint.setColor(color);
     }
-
-
 
     /**
      * Quick method to determine how many of the characters in a given string are upper case
@@ -233,6 +243,12 @@ public class PasswordStrengthView extends View {
         return score;
     }
 
+    /**
+     * A convenience method to determine how many characters in the given String aren't
+     * letters or numbers.
+     * @param stringToCheck
+     * @return Number of characters that aren't numbers or letters
+     */
     protected int getNonAlphanumericCount(String stringToCheck) {
         int score = 0;
         int loops = stringToCheck.length()-1;
@@ -245,6 +261,11 @@ public class PasswordStrengthView extends View {
         return score;
     }
 
+    /**
+     * A convenience method for returning the count of numbers in a given String.
+     * @param stringToCheck
+     * @return The numbers of digits in the String
+     */
     protected int getNumberCount(String stringToCheck) {
         int score = 0;
         int loops = stringToCheck.length()-1;
